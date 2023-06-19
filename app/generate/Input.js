@@ -4,23 +4,16 @@ import validUrl from 'valid-url'
 
 export const UrlInput = ({text, setText}) => {
     const [url, setUrl] = useState("")
-    const [urlInvalid, setUrlInvalid] = useState(false)
-
-    const handleUrlUpdate = e => {
-        setUrl(e.target.value)
-    }
-
     return (
         <div className="[&>*]:mb-2">
-            <label className={`block ${urlInvalid && "text-red-500"}`}>Enter URL</label>
+            <label className="block">Enter URL</label>
             <input 
-                className={`block w-100 border-b-2 ${urlInvalid && "border-red-500"} border-indigo-400 focus:outline-none`}
+                className="block w-100 border-b-2 border-indigo-400 focus:outline-none"
                 type="text" 
                 placeholder="" 
                 value={url} 
                 onChange={e => handleUrlUpdate(e)} 
             />
-            {urlInvalid && <p className="text-xs text-red-500">This is not a valid link</p>}
             <p className="text-xs text-gray-500">Link to open when scanned, e.g. https://example.com</p>
         </div>
     )
