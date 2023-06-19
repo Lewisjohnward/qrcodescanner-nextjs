@@ -3,16 +3,15 @@ import { useState } from 'react'
 import validUrl from 'valid-url'
 
 export const UrlInput = ({text, setText}) => {
-    const [url, setUrl] = useState("")
     return (
         <div className="[&>*]:mb-2">
             <label className="block">Enter URL</label>
             <input 
-                className="block w-100 border-b-2 border-indigo-400 focus:outline-none"
+                className="block w-full border-b-2 border-indigo-400 focus:outline-none"
                 type="text" 
                 placeholder="" 
-                value={url} 
-                onChange={e => handleUrlUpdate(e)} 
+                value={text} 
+                onChange={e => setText(e.target.value)} 
             />
             <p className="text-xs text-gray-500">Link to open when scanned, e.g. https://example.com</p>
         </div>
@@ -23,14 +22,13 @@ export const TextInput = ({text, setText}) => {
     return (
         <div className="[&>*]:mb-2">
             <label className="block">Enter text to share here</label>
-            <input 
-                className="block w-100 border-b-2 border-indigo-400 focus:outline-none" 
+            <textarea 
+                className="block overflow-auto resize-none h-24 w-full border-b-2 border-indigo-400 focus:outline-none" 
                 type="text" 
                 placeholder="" 
                 value={text} 
                 onChange={e => setText(e.target.value)} 
             />
-            <p className="text-xs text-gray-500">Link to open when scanned, e.g. https://example.com</p>
         </div>
     )
 }

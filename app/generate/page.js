@@ -43,8 +43,12 @@ export default function Generate() {
     }
 
     useEffect(() => {
-        generateQR("my name is jeff")
-    }, [])
+        text.length > 0 && generateQR(text)
+    }, [text])
+
+    const handleQRDownload = () => {
+        alert("download")
+    }
 
     const renderInput = () => {
         switch(content){
@@ -101,7 +105,10 @@ export default function Generate() {
 
             <div className="flex flex-col justify-center flex-grow bg-red-200">
                 <div className="flex gap-4 mt-4 bg-red-400 [&>*]:text-2xl">
-                    <MdFileDownload />
+                    <MdFileDownload 
+                        className="cursor-pointer"
+                        onClick={handleQRDownload}
+                    />
                     <BsFillPaletteFill />
                 </div>
 
