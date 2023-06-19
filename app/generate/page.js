@@ -74,7 +74,7 @@ export default function Generate() {
 
     return (
         <div className="flex flex-col gap-4 flex-grow overflow-scroll [&>div]:px-4">
-            <div className="flex gap-2 justify-center my-4 [&>*]:w-16">
+            <div className="flex gap-2 justify-around my-4 [&>*]:w-16">
                 {options.map((d, i) => {
                     return (
                         <div 
