@@ -46,24 +46,28 @@ export default function Generate() {
         text.length > 0 && generateQR(text)
     }, [text])
 
-    const handleQRDownload = () => {
+    const handleQRDownload = (event) => {
         alert("download")
+        const link = event.currentTarget
+        link.setAttribute('download', 'canvas.png')
+        const image = canvasRef.current.toDataURL('image/png')
+        link.setAttribute('href', image)
     }
 
     const renderInput = () => {
         switch(content){
             case 0:
                 return <UrlInput text={text} setText={setText}/>
-                break
+                    break
             case 1:
                 return <TextInput text={text} setText={setText}/>
-                break
+                    break
             case 2:
                 return <EmailInput text={text} setText={setText}/>
-                break
+                    break
             case 3:
                 return <PhoneInput text={text} setText={setText}/>
-                break
+                    break
         }
     }
 
@@ -86,7 +90,6 @@ export default function Generate() {
                     )})}
 
 
-
             </div>
 
             <hr />
@@ -105,10 +108,13 @@ export default function Generate() {
 
             <div className="flex flex-col justify-center flex-grow bg-red-200">
                 <div className="flex gap-4 mt-4 bg-red-400 [&>*]:text-2xl">
-                    <MdFileDownload 
-                        className="cursor-pointer"
+                    <a
                         onClick={handleQRDownload}
-                    />
+                    >
+                        <MdFileDownload 
+                            className="cursor-pointer"
+                        />
+                    </a>
                     <BsFillPaletteFill />
                 </div>
 
