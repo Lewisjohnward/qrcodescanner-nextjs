@@ -43,7 +43,7 @@ export default function Navbar() {
 
     return (
         <>
-            <header className="flex items-center gap-8 px-8 py-4 bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-rose-500 to-90% text-white font-bold text-lg">
+            <header className="flex items-center gap-8 px-8 py-6 bg-indigo-400 text-white font-bold text-lg">
                 <button 
                     className=""
                     onClick={() => setNavVisible(true)}
