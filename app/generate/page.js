@@ -66,7 +66,7 @@ export default function Generate() {
 
     return (
         <div className="flex flex-col gap-4 flex-grow overflow-scroll [&>div]:px-4">
-            <div className="flex gap-4 justify-center my-4 [&>*]:w-16">
+            <div className="flex gap-2 justify-center my-4 [&>*]:w-16">
                 {options.map((d, i) => {
                     return (
                         <div 
@@ -75,7 +75,7 @@ export default function Generate() {
                                 setIcon(d.icon)
                                 setContent(i)
                             }}
-                            className={`flex flex-col justify-center items-center py-2 px-4 border border-indigo-400 rounded ${i == content ? "bg-indigo-400 text-white font-semibold " : "text-gray-500 cursor-pointer"}`}>
+                            className={`flex flex-col justify-center items-center py-4 px-10 border border-indigo-400 rounded ${i == content ? "bg-indigo-400 text-white font-semibold " : "text-gray-500 cursor-pointer"}`}>
                             {d.icon}
                             <p>{d.text}</p>
                         </div>
