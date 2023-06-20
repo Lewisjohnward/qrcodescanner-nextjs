@@ -74,7 +74,7 @@ export default function Generate() {
 
     return (
         <div className="flex flex-col gap-4 flex-grow overflow-scroll [&>div]:px-4">
-            <div className="flex gap-1 justify-around my-4 [&>*]:w-16 text-xl">
+            <div className="flex gap-1 justify-around my-4 [&>*]:w-16 [&>*]:border-2 [&>*]:shadow text-xl">
                 {options.map((d, i) => {
                     return (
                         <div 
@@ -106,19 +106,27 @@ export default function Generate() {
                 <p className="text-xs text-gray-500">Content is directly encoded in the image.</p>
             </div>
 
-            <div className="flex flex-col justify-center flex-grow bg-red-200">
-                <div className="flex gap-4 mt-4 bg-red-400 [&>*]:text-2xl">
+            <div className="flex flex-col flex-grow">
+                <div className="flex gap-2 mb-4 [&>*]:text-2xl">
                     <a
                         onClick={handleQRDownload}
+                        className="border-2 border-indigo-400 shadow rounded p-4 text-gray-500 active:bg-indigo-400 active:text-white"
                     >
                         <MdFileDownload 
                             className="cursor-pointer"
                         />
                     </a>
-                    <BsFillPaletteFill />
+                    <button
+                        className="border-2 border-indigo-400 shadow rounded p-4 text-gray-500 active:bg-indigo-400 active:text-white"
+                    >
+                        <BsFillPaletteFill 
+                        />
+                    </button>
                 </div>
 
-                <canvas ref={canvasRef} className="m-auto border border-black" />
+                <div className="flex-grow flex-center">
+                    <canvas ref={canvasRef} className="w-72 h-72 border border-black" />
+                </div>
             </div>
 
 
