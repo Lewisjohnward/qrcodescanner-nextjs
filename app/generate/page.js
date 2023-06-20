@@ -124,7 +124,7 @@ export default function Generate() {
                     </button>
                 </div>
 
-                <div className="flex-grow flex-center">
+                <div className="flex-grow justify-center items-center">
                     <canvas ref={canvasRef} className="w-72 h-72 border border-black" />
                 </div>
             </div>
