@@ -154,6 +154,7 @@ function DiscardConfirm({discard, setConfirmDiscard}) {
         <Modal>
             <div 
                 className="flex flex-col justify-center align-center absolute inset-0 bg-black/60 h-screen w-screen p-8"
+                onClick={() => setConfirmDiscard(false)}
             >
                 <div
                     className="flex flex-col py-2 px-6 bg-white rounded [&>*]:mb-5"
