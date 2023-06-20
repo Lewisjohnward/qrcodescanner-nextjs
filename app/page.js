@@ -10,23 +10,6 @@ export default function Home() {
     const videoRef = useRef()
 
 
-    async function getMedia(){
-        let stream = null
-        try {
-            stream = await navigator.mediaDevices.getUserMedia({video: true})
-            if (videoRef.current) {
-                videoRef.current.srcObject = stream
-                videoRef.current.play()
-            }
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
-    useEffect(() => {
-        getMedia()
-    }, [])
-
     const handleResult = (result, error) => {
         if (!!result) { setData(result?.text); }
         if (!!error) { console.info(error); } 
@@ -46,6 +29,7 @@ export default function Home() {
                     </div>
                     :                    
                     <QrReader
+                        constraints={{facingMode: 'environment'}}
                         onResult={(result, error) => handleResult(result, error)}
                         style={{ width: '100%' }}
                         videoContainerStyle={{paddingTop: "0%"}}
