@@ -7,6 +7,7 @@ import { CiUser } from 'react-icons/ci'
 import { HiQrCode } from 'react-icons/hi2'
 import { MdQrCodeScanner } from 'react-icons/md'
 import { AiOutlineMenu } from 'react-icons/ai'
+import { BsQrCode } from 'react-icons/bs'
 
 export default function Navbar() {
     const [navVisible, setNavVisible] = useState(false)
@@ -43,7 +44,7 @@ export default function Navbar() {
 
     return (
         <>
-            <header className="flex items-center gap-8 px-8 py-6 bg-indigo-400 text-white font-bold text-lg">
+            <header className="flex items-center justify-around gap-8 px-8 py-6 bg-indigo-400 text-white font-bold text-lg">
                 <button 
                     className=""
                     onClick={() => setNavVisible(true)}
@@ -55,6 +56,7 @@ export default function Navbar() {
                 <h1>
                     {headerTitle(path)}
                 </h1>
+                <BsQrCode />
             </header>
             {!hidden && <Nav setNavVisible={setNavVisible} navVisible={navVisible}/> }
         </>
