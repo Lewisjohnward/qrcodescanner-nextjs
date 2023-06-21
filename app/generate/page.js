@@ -194,9 +194,14 @@ function DiscardConfirm({discard, setConfirmDiscard}) {
 function NewBtn({setText}) {
     const [open, setOpen] = useState(false)
 
+    const handleNewCode = () => {
+                setText("")
+                setOpen(false)
+    }
+
     return (
         <div className="absolute bottom-2 right-2 flex flex-col items-end">
-            {open && <button className="mb-4 px-6 py-3 bg-white rounded shadow text-gray-500" onClick={() => setText("")}>New QR Code</button>}
+            {open && <button className="mb-4 px-6 py-3 bg-white rounded shadow text-gray-500" onClick={handleNewCode}>New QR Code</button>}
             <div className="flex justify-center items-center w-20 h-20 rounded-full text-4xl font-semibold text-white bg-indigo-400">
                 <AiOutlinePlus 
                     className={clsx("transition-all duration-300", open ? "rotate-90" : "rotate-0")}
