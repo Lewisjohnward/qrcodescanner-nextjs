@@ -32,10 +32,21 @@ export default function Home() {
                         constraints={{facingMode: 'environment'}}
                         onResult={(result, error) => handleResult(result, error)}
                         style={{ width: '100%' }}
+                        ViewFinder={ViewFinder}
                         videoContainerStyle={{paddingTop: "0%"}}
                         videoStyle={{position: "relative", width: "100vw", height: "100vh", objectFit: "cover"}}
                     />
             }
         </section>
+    )
+}
+
+function ViewFinder() {
+    return (
+        <div className="absolute z-50 h-screen w-screen">
+            <div className="absolute z-50 bottom-1/2 right-1/2 translate-y-1/2 translate-x-1/2 border-2 border-red-500 w-56 h-56" 
+            />
+
+        </div>
     )
 }
