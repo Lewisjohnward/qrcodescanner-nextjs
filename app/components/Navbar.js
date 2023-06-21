@@ -44,18 +44,19 @@ export default function Navbar() {
 
     return (
         <>
-            <header className="flex items-center justify-around gap-8 px-8 py-6 bg-indigo-400 text-white font-bold text-lg">
-                <button 
-                    className=""
-                    onClick={() => setNavVisible(true)}
-                >
-                    <AiOutlineMenu
-                        className="text-xl"
-                    />
-                </button>
-                <h1>
-                    {headerTitle(path)}
-                </h1>
+            <header className="flex items-center justify-between gap-8 px-4 py-6 bg-indigo-400 text-white font-bold text-lg">
+                <div className="flex gap-8">
+                    <button 
+                        onClick={() => setNavVisible(true)}
+                    >
+                        <AiOutlineMenu
+                            className="text-xl"
+                        />
+                    </button>
+                    <h1>
+                        {headerTitle(path)}
+                    </h1>
+                </div>
                 <BsQrCode />
             </header>
             {!hidden && <Nav setNavVisible={setNavVisible} navVisible={navVisible}/> }
