@@ -197,7 +197,7 @@ function NewBtn() {
     }, [])
 
     return (
-        <div className="absolute bottom-2 right-2 flex flex-col items-end bg-red-200">
+        <div className="absolute bottom-2 right-2 flex flex-col items-end">
             {open && <button className="mb-4 bg-white shadow text-gray-500">New QR Code</button>}
             <div className="flex justify-center items-center w-20 h-20 rounded-full text-4xl font-semibold text-white bg-indigo-400">
                 <AiOutlinePlus 
