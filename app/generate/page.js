@@ -198,7 +198,7 @@ function NewBtn() {
 
     return (
         <div className="absolute bottom-2 right-2 flex flex-col items-end">
-            {open && <button className="mb-4 px-4 py-2 bg-white rounded shadow text-gray-500">New QR Code</button>}
+            {open && <button className="mb-4 px-6 py-3 bg-white rounded shadow text-gray-500">New QR Code</button>}
             <div className="flex justify-center items-center w-20 h-20 rounded-full text-4xl font-semibold text-white bg-indigo-400">
                 <AiOutlinePlus 
                     className={clsx("transition-all duration-300", open ? "rotate-90" : "rotate-0")}
