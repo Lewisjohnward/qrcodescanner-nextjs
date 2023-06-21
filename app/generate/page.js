@@ -32,6 +32,8 @@ export default function Generate() {
     const [confirmDiscard, setConfirmDiscard] = useState(null)
     const canvasRef = useRef()
 
+    const defaultQR = "QRScanner.com"
+
 
     const generateQR = async text => {
         try {
@@ -47,7 +49,7 @@ export default function Generate() {
     }
 
     useEffect(() => {
-        text.length > 0 && generateQR(text)
+        text.length > 0 ? generateQR(text) : generateQR(defaultQR)
     }, [text])
 
     const handleQRDownload = (event) => {
@@ -142,11 +144,11 @@ export default function Generate() {
                     </div>
 
                     <div className="flex-grow flex justify-center items-center">
-                        <canvas ref={canvasRef} className="w-72 h-72 border border-black" />
+                        <canvas ref={canvasRef} />
                     </div>
                 </div>
             </div>
-            <NewBtn />
+            <NewBtn setText={setText}/>
         </>
     )
 }
@@ -189,12 +191,12 @@ function DiscardConfirm({discard, setConfirmDiscard}) {
 
 }
 
-function NewBtn() {
+function NewBtn({setText}) {
     const [open, setOpen] = useState(false)
 
     return (
         <div className="absolute bottom-2 right-2 flex flex-col items-end">
-            {open && <button className="mb-4 px-6 py-3 bg-white rounded shadow text-gray-500">New QR Code</button>}
+            {open && <button className="mb-4 px-6 py-3 bg-white rounded shadow text-gray-500" onClick={() => setText("")}>New QR Code</button>}
             <div className="flex justify-center items-center w-20 h-20 rounded-full text-4xl font-semibold text-white bg-indigo-400">
                 <AiOutlinePlus 
                     className={clsx("transition-all duration-300", open ? "rotate-90" : "rotate-0")}
