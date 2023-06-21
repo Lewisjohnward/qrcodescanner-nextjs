@@ -190,11 +190,7 @@ function DiscardConfirm({discard, setConfirmDiscard}) {
 }
 
 function NewBtn() {
-    const [open, setOpen] = useState(true)
-
-    useEffect(() => {
-        //setTimeout(() => setOpen(true), 1000)
-    }, [])
+    const [open, setOpen] = useState(false)
 
     return (
         <div className="absolute bottom-2 right-2 flex flex-col items-end">
