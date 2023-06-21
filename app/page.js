@@ -33,7 +33,7 @@ export default function Home() {
                         onResult={(result, error) => handleResult(result, error)}
                         style={{ width: '100%' }}
                         videoContainerStyle={{paddingTop: "0%"}}
-                        videoStyle={{position: "relative"}}
+                        videoStyle={{position: "relative", width: "100vw", height: "100vh", objectFit: "cover"}}
                     />
             }
         </section>
