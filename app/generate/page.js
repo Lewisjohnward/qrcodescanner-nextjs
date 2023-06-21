@@ -1,9 +1,11 @@
 'use client'
+import { useState, useEffect, useRef } from 'react'
+import { clsx } from 'clsx'
+import QRCode from 'qrcode'
 import { AiOutlineLink, AiOutlineFileText, AiOutlineMail, AiOutlinePhone } from 'react-icons/ai'
 import { BsFillPaletteFill } from 'react-icons/bs'
 import { MdFileDownload } from 'react-icons/md'
-import { useState, useEffect, useRef } from 'react'
-import QRCode from 'qrcode'
+import { AiOutlinePlus } from 'react-icons/ai'
 import { UrlInput, TextInput, EmailInput, PhoneInput } from './Input'
 import  Modal  from '../components/modal'
 
@@ -27,7 +29,7 @@ export default function Generate() {
     const [content, setContent] = useState(0)
     const [icon, setIcon] = useState(options[content].icon)
     const [text, setText] = useState("")
-    const [confirmDiscard, setConfirmDiscard] = useState()
+    const [confirmDiscard, setConfirmDiscard] = useState(null)
     const canvasRef = useRef()
 
 
@@ -74,7 +76,7 @@ export default function Generate() {
     }
 
     const changeInputType = (d, i) => {
-        if (text.length > 0 && i != content) setConfirmDiscard(true)
+        if (text.length > 0 && i != content) setConfirmDiscard({icon: d.icon, content: i})
         else {
             setIcon(d.icon)
             setContent(i)
@@ -82,10 +84,11 @@ export default function Generate() {
     }
 
     const discard = () => {
-        setIcon(d.icon)
-        setContent(i)
+        setIcon(confirmDiscard.icon)
+        setContent(confirmDiscard.content)
+        setText("")
+        setConfirmDiscard(null)
     }
-
 
     return (
         <>
@@ -142,8 +145,7 @@ export default function Generate() {
                         <canvas ref={canvasRef} className="w-72 h-72 border border-black" />
                     </div>
                 </div>
-
-
+                <NewBtn />
             </div>
         </>
     )
@@ -174,6 +176,7 @@ function DiscardConfirm({discard, setConfirmDiscard}) {
                         </button>
                         <button 
                             className="text-indigo-500 font-semibold text-sm"
+                            onClick={discard}
                         >
                             YES, DISCARD CONTENT
                         </button>
@@ -183,5 +186,22 @@ function DiscardConfirm({discard, setConfirmDiscard}) {
         </Modal>
     )
 
+
 }
 
+function NewBtn() {
+    const [open, setOpen] = useState(false)
+
+    useEffect(() => {
+        //setTimeout(() => setOpen(true), 1000)
+    }, [])
+
+    return (
+        <div className="absolute bottom-4 right-4 flex justify-center items-center w-20 h-20 rounded-full text-4xl font-semibold text-white bg-indigo-400 transition-all duration-300">
+            <AiOutlinePlus 
+                className={clsx("transition-all duration-300", open ? "rotate-90" : "rotate-0")}
+                onClick={() => setOpen(prev => !prev)}
+            />
+        </div>
+    )
+}
