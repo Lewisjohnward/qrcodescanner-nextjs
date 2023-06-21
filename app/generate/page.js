@@ -145,8 +145,8 @@ export default function Generate() {
                         <canvas ref={canvasRef} className="w-72 h-72 border border-black" />
                     </div>
                 </div>
-                <NewBtn />
             </div>
+            <NewBtn />
         </>
     )
 }
@@ -190,18 +190,21 @@ function DiscardConfirm({discard, setConfirmDiscard}) {
 }
 
 function NewBtn() {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(true)
 
     useEffect(() => {
         //setTimeout(() => setOpen(true), 1000)
     }, [])
 
     return (
-        <div className="absolute bottom-4 right-4 flex justify-center items-center w-20 h-20 rounded-full text-4xl font-semibold text-white bg-indigo-400 transition-all duration-300">
-            <AiOutlinePlus 
-                className={clsx("transition-all duration-300", open ? "rotate-90" : "rotate-0")}
-                onClick={() => setOpen(prev => !prev)}
-            />
+        <div className="absolute bottom-2 right-2 flex flex-col items-end bg-red-200">
+            {open && <button className="mb-4 bg-white shadow text-gray-500">New QR Code</button>}
+            <div className="flex justify-center items-center w-20 h-20 rounded-full text-4xl font-semibold text-white bg-indigo-400">
+                <AiOutlinePlus 
+                    className={clsx("transition-all duration-300", open ? "rotate-90" : "rotate-0")}
+                    onClick={() => setOpen(prev => !prev)}
+                />
+            </div>
         </div>
     )
 }
