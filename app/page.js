@@ -16,10 +16,10 @@ export default function Home() {
     }
 
     return (
-        <section className="flex flex-col flex-grow items-center [&>*]:mt-40">
+        <section className="flex flex-col flex-grow items-center">
             {
                 data ?                         
-                    <div className="flex flex-col items-center gap-4">
+                    <div className="flex flex-col items-center gap-4 mt-40">
                         <p>Type: URL</p>
                         <Link className="underline" href={data}>{data}</Link>
                         <button
