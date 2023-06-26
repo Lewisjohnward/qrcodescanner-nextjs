@@ -59,7 +59,8 @@ export default function Navbar() {
                 </div>
                 <BsQrCode />
             </header>
-            {!hidden && <Nav setNavVisible={setNavVisible} navVisible={navVisible}/> }
+            {!hidden && 
+            <Nav setNavVisible={setNavVisible} navVisible={navVisible}/> }
         </>
     )
 }
