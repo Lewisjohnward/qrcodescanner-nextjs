@@ -2,10 +2,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { clsx } from 'clsx'
 import QRCode from 'qrcode'
-import { AiOutlineLink, AiOutlineFileText, AiOutlineMail, AiOutlinePhone } from 'react-icons/ai'
+import { AiOutlinePlus, AiOutlineLink, AiOutlineFileText, AiOutlineMail, AiOutlinePhone } from 'react-icons/ai'
 import { BsFillPaletteFill } from 'react-icons/bs'
 import { MdFileDownload } from 'react-icons/md'
-import { AiOutlinePlus } from 'react-icons/ai'
 import { UrlInput, TextInput, EmailInput, PhoneInput } from './Input'
 import  Modal  from '../components/modal'
 
