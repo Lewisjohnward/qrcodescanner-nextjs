@@ -40,7 +40,7 @@ export default function Navbar({navVisible, setNavVisible}) {
         >
             <div 
 
-                className={ `flex flex-col w-64 bg-white border-r border-gray-100
+                className={ `flex flex-col w-64 bg-white border-r border-gray-500/20
                     ${open ? "-translate-x-0" : "-translate-x-full"}
                     transition-all duration-500`}
             >
