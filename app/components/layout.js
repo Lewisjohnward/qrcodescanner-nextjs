@@ -17,6 +17,3 @@ export default function Layout({children}){
             </div>
     )
 }
-   //     <main className="relative h-screen flex flex-col" >
-   //                 </main>
-    
