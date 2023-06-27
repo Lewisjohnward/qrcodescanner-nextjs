@@ -1,5 +1,5 @@
 'use client'
-import Image from 'next/image'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect} from 'react'
@@ -9,87 +9,40 @@ import { MdQrCodeScanner } from 'react-icons/md'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { BsQrCode } from 'react-icons/bs'
 
-export default function Navbar() {
-    const [navVisible, setNavVisible] = useState(false)
-    const [hidden, setHidden] = useState(true)
-    const path = usePathname()
+export default function Navbar({navVisible, setNavVisible}) {
+    const [open, setOpen] = useState(true)
+    const [hidden, setHidden] = useState(false)
 
-    const headerTitle = (path) => {
-        switch(path){
-            case '/':
-                return 'QR Code Scanner'
-                break
-            case '/generate':
-                return 'QR Code Generator'
-                break
-            case '/whatsaqrcode':
-                return 'What is a QR Code?'
-                break
-            case '/privacy':
-                return 'Privacy Policy'
-                break
-            case '/signin':
-                return 'Sign-in'
-                break
-            default :
-                return 'This route needs a title'
-                break
+    const handleAnimation = () => {
+        if (window.innerWidth < 768){
+            setOpen(false)
+            setNavVisible(false)
+            setTimeout(() => setHidden(true), 500)
         }
     }
 
-    useEffect(() => {
-        navVisible == false && setTimeout(() => setHidden(true), 300)
-        navVisible == true && setHidden(false)
-    }, [navVisible])
+    useEffect(() => { 
+        if (navVisible) {
+            setHidden(false)
+            setOpen(true)
+        }
+    },[navVisible])
 
-    return (
-        <>
-            <header className="flex items-center justify-between gap-8 px-4 py-6 bg-indigo-400 text-white font-bold text-lg">
-                <div className="flex gap-8">
-                    <button 
-                        onClick={() => setNavVisible(true)}
-                    >
-                        <AiOutlineMenu
-                            className="text-xl"
-                        />
-                    </button>
-                    <h1>
-                        {headerTitle(path)}
-                    </h1>
-                </div>
-                <BsQrCode />
-            </header>
-            {!hidden && 
-            <Nav setNavVisible={setNavVisible} navVisible={navVisible}/> }
-        </>
-    )
-}
-
-function Nav({setNavVisible, navVisible}) {
-    const [open, setOpen] = useState(false)
-    const handleAnimation = () => {
-        setNavVisible(false)
-        setOpen(false)
-    }
-
-    useEffect(() => {
-        setOpen(true)
-    }, [])
+    if(hidden) return null
 
     return (
         <nav 
-            className={`none absolute z-50 flex w-screen h-screen
-                    transition-all ${open ? "bg-black/20" : "bg-black/0"}`}
-            onClick={() => handleAnimation()}
+            className={`absolute z-50 flex w-screen h-screen
+                    transition-all 
+                    ${open ? "bg-black/20" : "bg-black/0"}
+                    md:relative md:w-64 md:z-0 `}
+            onClick={handleAnimation}
         >
             <div 
 
-                className={
-                    `
-                    flex flex-col w-64 bg-white
+                className={ ` flex flex-col w-64 bg-white
                     ${open ? "-translate-x-0" : "-translate-x-full"}
-                    transition-all duration-500
-                `}
+                    transition-all duration-500`}
             >
                 <Link 
                     href="/signin"

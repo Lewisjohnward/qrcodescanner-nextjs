@@ -95,8 +95,8 @@ export default function Generate() {
     return (
         <>
             {confirmDiscard && <DiscardConfirm setConfirmDiscard={setConfirmDiscard} discard={discard}/>}
-            <div className="flex flex-col gap-4 flex-grow overflow-scroll [&>div]:px-4">
-                <div className="flex gap-1 justify-around my-4 [&>*]:w-16 [&>*]:border-2 [&>*]:shadow text-xl">
+            <div className="flex flex-col gap-4 overflow-scroll [&>div]:px-4 lg:w-1/2">
+                <div className="flex gap-1 justify-around my-4 [&>*]:w-16 [&>*]:border-2 [&>*]:shadow text-xl md:justify-start">
                     {options.map((d, i) => {
                         return (
                             <div 
@@ -143,7 +143,7 @@ export default function Generate() {
                         </button>
                     </div>
 
-                    <div className="flex-grow flex justify-center items-center">
+                    <div className="flex-grow flex justify-center items-center mt-24">
                         <canvas ref={canvasRef} />
                     </div>
                 </div>
@@ -157,11 +157,11 @@ function DiscardConfirm({discard, setConfirmDiscard}) {
     return (
         <Modal>
             <div 
-                className="flex flex-col justify-center align-center absolute inset-0 bg-black/60 h-screen w-screen p-8"
+                className="flex flex-col justify-center items-center absolute inset-0 bg-black/60 h-screen w-screen p-8"
                 onClick={() => setConfirmDiscard(false)}
             >
                 <div
-                    className="flex flex-col py-2 px-6 bg-white rounded [&>*]:mb-5"
+                    className="flex flex-col py-2 px-6 bg-white rounded [&>*]:mb-5 md:w-1/2 lg:w-2/6"
                 >
                     <h1 className="text-xl font-semibold" >Discard code's content?</h1>
                     <p className="text-gray-500"> 

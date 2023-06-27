@@ -46,7 +46,6 @@ function ViewFinder() {
         <div className="absolute z-40 h-screen w-screen">
             <div className="absolute bottom-1/2 right-1/2 translate-y-1/2 translate-x-1/2 border-2 border-red-500 w-56 h-56" 
             />
-
         </div>
     )
 }
